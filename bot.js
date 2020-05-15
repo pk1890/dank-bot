@@ -31,8 +31,7 @@ client.on('message', message => {
 
 
 	if (!message.content.startsWith(prefix) || message.author.bot) {
-        if(tokens.includes('instagram') || tokens.includes('tiktok')){
-            message.react(":poop:");
+        if(tokens.includes('instagram') || tokens.includes('tiktok') || message.content.toLowerCase() === 'tiktok' || message.content.toLowerCase() === 'instagram'){
             message.channel.send(_.sample(["Normies, REEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", "Do You Are HAvE sTUpId?"]));
         }
 
@@ -46,7 +45,7 @@ client.on('message', message => {
         message.channel.send('Uneducated peasant');
     } 
     
-    else if (message.content.toLowerCase() === '!greetings and salutations') {
+    else if (message.content.toLowerCase() === '>greetings and salutations') {
 		message.channel.send('Ahhh..., greetings fellow enslaved brain form. It must be a great honour for you to send text message to me');
 	}
                 
@@ -56,13 +55,13 @@ client.on('message', message => {
 
     
     else if (tokens.includes("what") && tokens.includes("movie") && (
-        tokens.includes("love") || tokens.includes("recommend") || tokens.includes("like")
+        tokens.includes("love") || tokens.includes("recommend") || tokens.includes("like") || tokens.includes("favourite")
     )){
         message.channel.send("I like the presented one. It is located at the indicated Unified Resoruce Locator: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`"); 
     }
     
     else if (tokens.includes('joke') && tokens.includes('tell')){
-        if(randomInteger(0, 1) == 0){
+        if(randomInteger(0, 2) == 0){
             message.channel.send('Ughhh.. fine. I\'ll tell you a "joke..."');
             setTimeout(function(){
                 var url = "https://sv443.net/jokeapi/v2/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist";
@@ -95,6 +94,9 @@ client.on('message', message => {
 
     else if(tokens.includes('what') && tokens.includes('is')){
         var thing = message.content.match(/"([^\""]*)"/)[1];
+        if (thing === null){
+
+        }
         console.log(thing);
         var url = new URL("https://en.wikipedia.org/w/api.php"),
         params = {'action': 'query',
